@@ -13,7 +13,7 @@ final class Node extends Thing
             ->getResponse()->body;
     }
 
-    public function search(string $query, array $uriParams): ?array
+    public function search(string $query, array $uriParams = []): ?array
     {
         return $this->api->getClient()->get('/nodes/search', ['uriParams' => ['query' => $query] + $uriParams])
             ->getResponse()->body;
