@@ -116,7 +116,9 @@ final class Client
         // @see: https://graphcommons.github.io/api-v1/#errors
         $code =@ (int) $resultInfo['http_code'];
         if (!$code || $code >= 400) {
-            throw new ClientException('HTTP error', $code);
+            // HTTP/1.1 422 Unprocessable Entity
+            throw new ClientException('HTTP error (' .
+                preg_replace('~HTTP/(?:[^\s]+) ([^\r\n]+).*~s', '\1', $result) . ')', $code);
         }
 
         $this->request->method = $method;
