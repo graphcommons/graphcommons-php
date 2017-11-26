@@ -9,15 +9,67 @@ require './src/Autoload.php';
 
 use GraphCommons\Autoload;
 use GraphCommons\Api;
+use GraphCommons\{Graph, GraphSignal};
 
 Autoload::register();
 
 $api = new Api(KEY, DEBUG);
-// prs($api);
-$r=$api->getClient()->get('/status', ["body"=>["a"=>1]]);
-// prs($r);
 
-// dumpers
+// // GET /status
+// $ret = $api->status();
+
+$graph = new Graph($api);
+
+// // HEAD /graphs/:id
+// $ret = $graph->check('8f8c794a-a498-4c3e-a73b-95a460db6e3a');
+
+// // GET /graphs/:id
+// $ret = $graph->get('8f8c794a-a498-4c3e-a73b-95a460db6e3a');
+
+// // POST /graphs
+// $ret = $graph->create([
+//     'name'        => 'Test',
+//     'description' => '',
+//     'status'      => Graph::STATUS_DRAFT,
+//     'signals'     => [
+//         ['action'    => Graph::SIGNAL_CREATE_EDGE,
+//          'from_name' => 'Ahmet',
+//          'from_type' => 'Person',
+//          'to_name'   => 'Burak',
+//          'to_type'   => 'Person',
+//          'name'      => 'COLLABORATED',
+//          'weight'    => 2]
+//     ]
+// ]);
+
+// // PUT /graphs/:id
+// $ret = $graph->update('b5081e44-40cc-4b82-ba0d-6f8985b7d7e8', [
+//     'name'        => 'Test',
+//     'description' => 'Test description.',
+//     'subtitle'    => 'Test subtitle.',
+// ]);
+
+// // PUT /graphs/:id/clear
+// $ret = $graph->clear('b5081e44-40cc-4b82-ba0d-6f8985b7d7e8');
+
+// // PUT /graphs/:id/add
+// $ret = $graph->createSignal('b5081e44-40cc-4b82-ba0d-6f8985b7d7e8', [
+//     ['action'    => Graph::SIGNAL_CREATE_EDGE,
+//      'from_name' => 'Ahmet',
+//      'from_type' => 'Person',
+//      'to_name'   => 'Fatih',
+//      'to_type'   => 'Person',
+//      'name'      => 'COLLABORATED',
+//      'weight'    => 2]
+// ]);
+
+$ret = $graph->delete('1b31ce51-14b4-4fb8-b689-9bd95793a47e');
+
+prs($ret);
+
+
+
+// @dump
 function prs($input = '', $exit = false) {
     echo print_r($input, true) . PHP_EOL;
     if ($exit) {
