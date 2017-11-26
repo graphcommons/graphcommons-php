@@ -110,7 +110,7 @@ final class Client
 
         if ($apiConfig['debug']) {
             printf("Call: %s %s\n\n", $method, $url);
-            printf("%s\n\n%s\n\n", $resultInfo['request_header'], $result);
+            printf("%s\n\n%s\n\n%s\n\n", $resultInfo['request_header'], $body, $result);
         }
 
         $this->request->method = $method;
