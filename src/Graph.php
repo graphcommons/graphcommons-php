@@ -22,9 +22,8 @@ final class Graph
                  SIGNAL_DELETE_EDGE_TYPE = 'edgetype_delete';
 
     private $api;
-    private $data = [];
 
-    public function __construct(Api $api, array $data = [])
+    public function __construct(Api $api)
     {
         $this->api = $api;
     }
