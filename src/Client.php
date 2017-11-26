@@ -23,7 +23,7 @@ final class Client
             return call_user_func_array([$this, 'send'], $arguments);
         }
 
-        throw new \BadMethodCallException('Accepted methods: ' . join(',', $methods) .'.');
+        throw new \BadMethodCallException('Accepted methods: '. join(',', $methods) .'.');
     }
 
     public function getApi(): Api
@@ -66,7 +66,7 @@ final class Client
 
         $url = sprintf('%s/%s', $apiConfig['url'], trim($uri, '/ '));
         if (!empty($args['uriParams'])) {
-            $url .= '?' . http_build_query($args['uriParams']);
+            $url .= '?'. http_build_query($args['uriParams']);
         }
 
         $headers = $args['headers'] ?? [];
@@ -148,7 +148,7 @@ final class Client
                 $errorMessage = 'Unknown error';
             }
 
-            throw new ClientException('HTTP error (' . $errorMessage . ')', $errorCode);
+            throw new ClientException('HTTP error ('. $errorMessage .')', $errorCode);
         }
 
         return $this;
@@ -189,7 +189,7 @@ final class Client
     {
         $return = json_decode($body, false, 512, JSON_BIGINT_AS_STRING);
         if (json_last_error()) {
-            throw new ClientException('JSON error (' . json_last_error_msg() . ')');
+            throw new ClientException('JSON error ('. json_last_error_msg() .')');
         }
 
         return $return;
