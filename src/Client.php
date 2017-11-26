@@ -109,7 +109,7 @@ final class Client
         curl_close($ch);
 
         if ($apiConfig['debug']) {
-            printf("Call: %s\n\n", $url);
+            printf("Call: %s %s\n\n", $method, $url);
             printf("%s\n\n%s\n\n", $resultInfo['request_header'], $result);
         }
 
