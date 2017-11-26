@@ -40,4 +40,10 @@ final class Api
     {
         return $this->client->get('/status')->getResponse()->body;
     }
+
+    public function search(string $query, array $uriParams): ?array
+    {
+        return $this->client->get('/search', ['uriParams' => ['query' => $query] + $uriParams])
+            ->getResponse()->body;
+    }
 }
