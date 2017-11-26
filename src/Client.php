@@ -15,7 +15,7 @@ final class Client
         $this->api = $api;
     }
 
-    public function __call(string $method, array $arguments = [])//: self
+    public function __call(string $method, array $arguments = []): self
     {
         $methods = ['head', 'get', 'post', 'put', 'delete'];
         if (in_array($method, $methods)) {
@@ -109,7 +109,8 @@ final class Client
         curl_close($ch);
 
         if ($apiConfig['debug']) {
-            print_r($resultInfo['request_header'] . PHP_EOL . PHP_EOL . $result . PHP_EOL);
+            printf("Call: %s\n\n", $url);
+            printf("%s\n\n%s\n\n", $resultInfo['request_header'], $result);
         }
 
         // @see: https://graphcommons.github.io/api-v1/#errors
@@ -175,7 +176,7 @@ final class Client
 
     private function parseBody(?string $body): ?object
     {
-        $return = json_decode($body, false, JSON_BIGINT_AS_STRING);
+        $return = json_decode($body, false, 512, JSON_BIGINT_AS_STRING);
         if (json_last_error()) {
             throw new ClientException(json_last_error_msg());
         }
