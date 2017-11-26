@@ -9,7 +9,7 @@ require './src/Autoload.php';
 
 use GraphCommons\Autoload;
 use GraphCommons\Api;
-use GraphCommons\{Graph, GraphSignal};
+use GraphCommons\Thing\{Graph};
 
 Autoload::register();
 

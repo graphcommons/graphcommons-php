@@ -1,10 +1,11 @@
 <?php
 declare (strict_types=1);
-namespace GraphCommons;
+namespace GraphCommons\Thing;
 
+use GraphCommons\Api;
 use \stdClass as object; // @note This will be forbidden with PHP/7.2.
 
-final class Graph
+final class Graph extends Thing
 {
     public const STATUS_DRAFT     = 0,
                  STATUS_PUBLISHED = 1,
@@ -20,13 +21,6 @@ final class Graph
                  SIGNAL_UPDATE_EDGE_TYPE = 'edgetype_update',
                  SIGNAL_DELETE_NODE_TYPE = 'nodetype_delete',
                  SIGNAL_DELETE_EDGE_TYPE = 'edgetype_delete';
-
-    private $api;
-
-    public function __construct(Api $api)
-    {
-        $this->api = $api;
-    }
 
     public function check(string $id): bool
     {

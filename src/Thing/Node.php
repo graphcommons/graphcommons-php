@@ -1,18 +1,12 @@
 <?php
 declare (strict_types=1);
-namespace GraphCommons;
+namespace GraphCommons\Thing;
 
+use GraphCommons\Api;
 use \stdClass as object; // @note This will be forbidden with PHP/7.2.
 
-final class Node
+final class Node extends Thing
 {
-    private $api;
-
-    public function __construct(Api $api)
-    {
-        $this->api = $api;
-    }
-
     public function get(string $id): ?object
     {
         return $this->api->getClient()->get('/nodes/'. $id)
