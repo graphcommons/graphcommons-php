@@ -15,7 +15,7 @@ class Api extends ApiCaller
         ]
     ];
 
-    public function __construct(string $key, bool $debug = false, array $clientOptions = [])
+    public final function __construct(string $key, bool $debug = false, array $clientOptions = [])
     {
         $this->config['key'] = trim($key);
         $this->config['debug'] = $debug;
