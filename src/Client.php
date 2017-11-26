@@ -75,7 +75,7 @@ final class Client
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
         if ($method == 'PUT' || $method == 'POST') {
-            $body = (string) json_encode($args['body']);
+            $body = (string) json_encode($body);
             $headers['Content-Type'] = 'application/json';
             $headers['Content-Length'] = strlen($body);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
