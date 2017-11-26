@@ -113,14 +113,6 @@ final class Client
             printf("%s\n\n%s\n\n", $resultInfo['request_header'], $result);
         }
 
-        // @see: https://graphcommons.github.io/api-v1/#errors
-        $code =@ (int) $resultInfo['http_code'];
-        if (!$code || $code >= 400) {
-            // HTTP/1.1 422 Unprocessable Entity
-            throw new ClientException('HTTP error (' .
-                preg_replace('~HTTP/(?:[^\s]+) ([^\r\n]+).*~s', '\1', $result) . ')', $code);
-        }
-
         $this->request->method = $method;
         $this->request->uri = $uri;
         $this->request->headers = $this->parseHeaders($resultInfo['request_header']);
@@ -141,9 +133,23 @@ final class Client
             $body = $this->parseBody($body);
         }
 
-        $this->response->code = $code;
+        $this->response->code =@ (int) $resultInfo['http_code'];
         $this->response->headers = $this->parseHeaders($headers);
         $this->response->body = $body;
+
+        // @see: https://graphcommons.github.io/api-v1/#errors
+        if ($this->response->code == 0 || $this->response->code >= 400) {
+            $errorCode = $this->response->code;
+            if (isset($this->response->body->msg)) {
+                $errorMessage = $this->response->body->msg;
+            } elseif (isset($this->response->headers[0])) {
+                $errorMessage = preg_replace('~HTTP/(?:[^\s]+) (.+)~s', '\1', $this->response->headers[0]);
+            } else {
+                $errorMessage = 'Unknown error';
+            }
+
+            throw new ClientException('HTTP error (' . $errorMessage . ')', $errorCode);
+        }
 
         return $this;
     }
