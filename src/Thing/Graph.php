@@ -82,7 +82,7 @@ final class Graph extends Thing
             ->getResponse()->body;
     }
 
-    public function search(string $query, array $uriParams): ?array
+    public function search(string $query, array $uriParams = []): ?array
     {
         return $this->api->getClient()->get('/graphs/search', ['uriParams' => ['query' => $query] + $uriParams])
             ->getResponse()->body;
