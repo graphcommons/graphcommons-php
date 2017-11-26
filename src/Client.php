@@ -131,14 +131,17 @@ final class Client
         }
 
         @ [$headers, $body] = $result;
-        // @note: No GZip support yet (on the API side).
-        if ($body && ($this->response->headers['content-encoding'] ?? '') == 'gzip') {
-            $body = gzdecode($body);
+        if ($body) {
+            // @note: No GZip support yet (on the API side).
+            if (($this->response->headers['content-encoding'] ?? '') == 'gzip') {
+                $body = gzdecode($body);
+            }
+            $body = $this->parseBody($body);
         }
 
         $this->response->code = $code;
         $this->response->headers = $this->parseHeaders($headers);
-        $this->response->body = $this->parseBody($body);
+        $this->response->body = $body;
 
         return $this;
     }
@@ -178,7 +181,7 @@ final class Client
     {
         $return = json_decode($body, false, 512, JSON_BIGINT_AS_STRING);
         if (json_last_error()) {
-            throw new ClientException(json_last_error_msg());
+            throw new ClientException('JSON error (' . json_last_error_msg() . ')');
         }
 
         return $return;
