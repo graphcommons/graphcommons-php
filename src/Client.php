@@ -124,7 +124,7 @@ final class Client
             array_shift($result);
         }
 
-        @ [$headers, $body] = $result;
+        @ [$headers, $body] = array_filter($result);
         if ($body) {
             // @note: No GZip support yet (on the API side).
             if (($this->response->headers['content-encoding'] ?? '') == 'gzip') {
@@ -185,7 +185,8 @@ final class Client
         return $return;
     }
 
-    private function parseBody(?string $body): ?object
+    // @return ?object|?array
+    private function parseBody(?string $body)
     {
         $return = json_decode($body, false, 512, JSON_BIGINT_AS_STRING);
         if (json_last_error()) {
