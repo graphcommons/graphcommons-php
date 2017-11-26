@@ -2,7 +2,9 @@
 declare (strict_types=1);
 namespace GraphCommons;
 
-class Api extends ApiCaller
+use \stdClass as object; // @note This will be forbidden with PHP/7.2.
+
+final class Api
 {
     protected $client;
     protected $config = [
@@ -15,7 +17,7 @@ class Api extends ApiCaller
         ]
     ];
 
-    public final function __construct(string $key, bool $debug = false, array $clientOptions = [])
+    public function __construct(string $key, bool $debug = false, array $clientOptions = [])
     {
         $this->config['key'] = trim($key);
         $this->config['debug'] = $debug;
@@ -24,13 +26,18 @@ class Api extends ApiCaller
         $this->client = new Client($this);
     }
 
-    public final function getClient(): Client
+    public function getClient(): Client
     {
         return $this->client;
     }
 
-    public final function getConfig(): array
+    public function getConfig(): array
     {
         return $this->config;
+    }
+
+    public function status(): ?object
+    {
+        return $this->client->get('/status')->getResponse()->body;
     }
 }
