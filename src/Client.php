@@ -1,20 +1,75 @@
 <?php
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2015 Graph Commons & contributors.
+ *     <http://graphcommons.com>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 declare (strict_types=1);
+
 namespace GraphCommons;
 
 use \stdClass as object; // @note This will be forbidden with PHP/7.2.
 
+/**
+ * @package GraphCommons
+ * @object  GraphCommons\Client
+ * @author  Kerem Güneş <k-gun@mail.com>
+ */
 final class Client
 {
+    /**
+     * Api.
+     * @var GraphCommons\Api
+     */
     private $api;
+
+    /**
+     * Request.
+     * @var object
+     */
     private $request;
+
+    /**
+     * Response.
+     * @var object
+     */
     private $response;
 
+    /**
+     * Constructor.
+     * @param GraphCommons\Api $api
+     */
     public function __construct(Api $api)
     {
         $this->api = $api;
     }
 
+    /**
+     * Call magic.
+     * @param  string $method
+     * @param  array  $arguments
+     * @return self
+     * @throws GraphCommons\ClientException, BadMethodCallException
+     */
     public function __call(string $method, array $arguments = []): self
     {
         $methods = ['head', 'get', 'post', 'put', 'delete'];
@@ -26,22 +81,38 @@ final class Client
         throw new \BadMethodCallException('Accepted methods: '. join(',', $methods) .'.');
     }
 
+    /**
+     * Get api.
+     * @return GraphCommons\Api
+     */
     public function getApi(): Api
     {
         return $this->api;
     }
 
+    /**
+     * Get request.
+     * @return ?object
+     */
     public function getRequest(): ?object
     {
         return $this->request;
     }
 
+    /**
+     * Get response.
+     * @return ?object
+     */
     public function getResponse(): ?object
     {
         return $this->response;
     }
 
-    // HTTP Message <https://tools.ietf.org/html/rfc2616#section-4>
+    /**
+     * Create message object.
+     * @return object
+     * @refence HTTP Message <https://tools.ietf.org/html/rfc2616#section-4>
+     */
     private function createMessageObject(): object
     {
         $object = new \stdClass();
@@ -50,10 +121,17 @@ final class Client
         return $object;
     }
 
+    /**
+     * Send.
+     * @param  string $method
+     * @param  string $uri
+     * @param  array  $args
+     * @return self
+     * @throws GraphCommons\ClientException
+     */
     private function send(string $method, string $uri, array $args = []): self
     {
         $apiConfig = $this->api->getConfig();
-        // prs($apiConfig,1);
         if (empty($apiConfig['url'])) {
             throw new ClientException('API URL is required (config.url)');
         }
@@ -82,6 +160,7 @@ final class Client
         }
 
         $headers['Accept'] = 'application/json';
+        // @note: No GZip support yet (on the API side).
         $headers['Accept-Encoding'] = 'gzip';
         $headers['Authentication'] = $apiConfig['key'];
         $headers['User-Agent'] = 'GraphCommons-PHP';
@@ -154,6 +233,11 @@ final class Client
         return $this;
     }
 
+    /**
+     * Parse headers.
+     * @param  string $headers
+     * @return array
+     */
     private function parseHeaders(?string $headers): array
     {
         $return = [];
@@ -185,7 +269,11 @@ final class Client
         return $return;
     }
 
-    // @return ?object|?array
+    /**
+     * Parse body.
+     * @param  string $body
+     * @return any
+     */
     private function parseBody(?string $body)
     {
         $return = json_decode($body, false, 512, JSON_BIGINT_AS_STRING);

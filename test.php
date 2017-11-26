@@ -9,7 +9,7 @@ require './src/Autoload.php';
 
 use GraphCommons\Autoload;
 use GraphCommons\Api;
-use GraphCommons\Thing\{Graph};
+use GraphCommons\Thing\{Graph, Node, Hub};
 
 Autoload::register();
 
@@ -65,6 +65,19 @@ $graph = new Graph($api);
 
 // // DELETE /graphs/:id
 // $ret = $graph->delete('1b31ce51-14b4-4fb8-b689-9bd95793a47e');
+
+$node = new Node($api);
+
+// // GET /nodes/:id
+// $ret = $node->get('1b1cbad8-04cb-4131-aa57-00f7aaee958');
+
+// // GET /nodes/search
+// $ret = $node->search('1b1cbad8-04cb-4131-aa57-00f7aaee958');
+
+$hub = new Hub($api);
+
+// // GET /hubs/:id
+// $ret = $hub->get('2fa2394d-c6b1-4420-b842-760d10544ba1');
 
 prs($ret);
 
