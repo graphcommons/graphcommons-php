@@ -2,7 +2,7 @@
 declare (strict_types=1);
 namespace GraphCommons;
 
-class Api extends ApiBase
+class Api extends ApiCaller
 {
     protected $client;
     protected $config = [
