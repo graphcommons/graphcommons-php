@@ -63,7 +63,8 @@ $graph = new Graph($api);
 //      'weight'    => 2]
 // ]);
 
-$ret = $graph->delete('1b31ce51-14b4-4fb8-b689-9bd95793a47e');
+// // DELETE /graphs/:id
+// $ret = $graph->delete('1b31ce51-14b4-4fb8-b689-9bd95793a47e');
 
 prs($ret);
 
