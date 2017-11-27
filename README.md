@@ -47,14 +47,21 @@ $clientOptions = [
 
 ```php
 use GraphCommons\Api;
-use GraphCommons\Thing\{Graph, Node, Hub};
 
 $api = new Api('<Yor API Key' /*, bool $debug = false, array $clientOptions = [] */);
 ```
 
-##### Check API Status
+##### API Status
 
 ```php
 // GET /status
 dump $api->status() #=> ?object
 ```
+
+##### API Search
+
+```php
+// GET /search
+dump $api->search('Trump' /*, array $uriParams = [] */) #=> ?array
+```
+
