@@ -23,12 +23,12 @@ Autoload::register();
 ```
 
 ```bash
-composer require graphcommons/graphcommons-php
+composer require graphcommons/graphcommons
 ```
 
 ```js
 // composer.json
-{"require": {"graphcommons/graphcommons-php": "~2.0"}}
+{"require": {"graphcommons/graphcommons": "~2.0"}}
 ```
 
 ## Configuration (Client Options)
