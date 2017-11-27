@@ -76,12 +76,31 @@ $graph = new Graph($api);
 
 #### Check
 ```php
-// GET /graphs/:id
+// HEAD /graphs/:id
 dump $graph->check('<id>'); // => bool
 ```
 
 #### Get
 ```php
 // GET /graphs/:id
-dump $graph->status('<id>'); // => ?object
+dump $graph->get('<id>'); // => ?object
+```
+
+#### Create
+```php
+// POST /graphs
+dump $graph->create([
+    'name'        => 'Test',
+    'description' => '',
+    'status'      => Graph::STATUS_DRAFT,
+    'signals'     => [
+        ['action'    => Graph::SIGNAL_CREATE_EDGE,
+         'from_name' => 'Ahmet',
+         'from_type' => 'Person',
+         'to_name'   => 'Burak',
+         'to_type'   => 'Person',
+         'name'      => 'COLLABORATED',
+         'weight'    => 2]
+    ]
+]); // => ?object
 ```
