@@ -55,16 +55,16 @@ use GraphCommons\Api;
 $api = new Api('<Yor API Key>' /*, bool $debug = false, array $clientOptions = [] */);
 ```
 
-#### Status
+#### API - Status
 ```php
 // GET /status
 dump $api->status(); // => ?object
 ```
 
-#### Search
+#### API - Search
 ```php
 // GET /search
-dump $api->search('Search Query' /*, array $uriParams = [] */); // => ?array
+dump $api->search('<Search Query>' /*, array $uriParams = [] */); // => array
 ```
 
 ### Graph Object
@@ -74,19 +74,19 @@ use GraphCommons\Thing\Graph;
 $graph = new Graph($api);
 ```
 
-#### Check
+#### Graph - Check
 ```php
 // HEAD /graphs/:id
-dump $graph->check('<id>'); // => bool
+dump $graph->check('<ID>'); // => bool
 ```
 
-#### Get
+#### Graph - Get
 ```php
 // GET /graphs/:id
-dump $graph->get('<id>'); // => ?object
+dump $graph->get('<ID>'); // => ?object
 ```
 
-#### Create
+#### Graph - Create
 ```php
 // POST /graphs
 dump $graph->create([
@@ -105,18 +105,74 @@ dump $graph->create([
 ]); // => ?object
 ```
 
-#### Update
+#### Graph - Update
 ```php
 // PUT /graphs/:id
-dump $graph->update('<id>', [
+dump $graph->update('<ID>', [
     'name'        => 'Test',
     'description' => 'Test description.',
     'subtitle'    => 'Test subtitle.',
 ]); // => ?object
 ```
 
-#### Clear
+#### Graph - Clear
 ```php
 // PUT /graphs/:id/clear
-dump $graph->clear('<id>'); // => ?object
+dump $graph->clear('<ID>'); // => ?object
+```
+
+#### Graph - Create Signal
+```php
+// PUT /graphs/:id/add
+dump $graph->createSignal('<ID>', [
+    ['action'    => Graph::SIGNAL_CREATE_EDGE,
+     'from_name' => 'Ahmet',
+     'from_type' => 'Person',
+     'to_name'   => 'Fatih',
+     'to_type'   => 'Person',
+     'name'      => 'COLLABORATED',
+     'weight'    => 2]
+]); // => ?object
+```
+
+#### Graph - Get Types
+```php
+// GET /graphs/:id/types
+dump $graph->getTypes('<ID>'); // => ?object
+```
+
+#### Graph - Get Edges
+```php
+// GET /graphs/:id/edges
+dump $graph->getEdges('<ID>', array $uriParams); // => ?object
+```
+
+#### Graph - Get Paths
+```php
+// GET /graphs/:id/paths
+dump $graph->getPaths('<ID>', array $uriParams); // => ?object
+```
+
+#### Graph - Get Paths
+```php
+// GET /graphs/:id/paths
+dump $graph->getPaths('<ID>', array $uriParams); // => ?object
+```
+
+#### Graph - Get Collab Filter
+```php
+// GET /graphs/:id/collab_filter
+dump $graph->getCollabFilter('<ID>', array $uriParams); // => ?object
+```
+
+#### Graph - Search
+```php
+// GET /graphs/search
+dump $api->search('<Search Query>' /*, array $uriParams = [] */); // => array
+```
+
+#### Graph - Delete
+```php
+// DELETE /graphs/:id
+dump $api->delete('<ID>'); // => ?object
 ```
