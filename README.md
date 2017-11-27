@@ -50,7 +50,7 @@ array $clientOptions = [
 
 ## Usage
 
-Notice: If any error, all (caller) methods below will throw `GraphCommons\ClientException` due to using `GraphCommons\Client::send()` method that makes call to Graph Commons API. So please, use `try/catch` blocks while making your calls, not regarding this usage examples.
+Notice: If any error, all (caller) methods below will throw `GraphCommons\ClientException` due to using `GraphCommons\Client::send()` method that makes call to Graph Commons API and throws exception when an error occurres through. So please, use `try/catch` blocks while making your calls, not regarding this usage examples.
 
 ### API Object
 ```php
