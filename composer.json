@@ -1,6 +1,10 @@
 {
     "name": "graphcommons/graphcommons",
     "type": "library",
+    "dist": {
+        "type": "vcs",
+        "url": "https://github.com/graphcommons/graphcommons-php"
+    },
     "homepage": "http://github.com/graphcommons/graphcommons-php",
     "description": "PHP Wrapper for Graph Commons API",
     "keywords": ["graph commons", "graphcommons", "rest", "php"],
