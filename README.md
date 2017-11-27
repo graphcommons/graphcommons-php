@@ -7,7 +7,7 @@ See more about [here](//graphcommons.com/about).
 - Set autoloader properly or use [Composer](//getcomposer.org).
 - Use PHP >= 7.1 (or see others [PHP < 7.1](//github.com/graphcommons/graphcommons-php7-archive), [PHP < 7.0](//github.com/graphcommons/graphcommons-php-archive)).
 - Run each call in `try/catch` blocks.
-- On README, `dump` means `var_dump`.
+- On README, `dump` means `var_dump()`, besides `?` means optional for function arguments and nullable for function returns.
 
 Notice: See Graph Commons's official documents [here](//graphcommons.github.io/api-v1/) before using this library.
 
@@ -31,12 +31,16 @@ composer require graphcommons/graphcommons
 {"require": {"graphcommons/graphcommons": "~2.0"}}
 ```
 
-## Configuration (Client Options)
+## Configuration
 
-Configuration is actually cURL options and optional but you can provide all these;
+Configuration is optional but you can provide all these;
 
 ```php
-$clientOptions = [
+// Dumps all Request and Response stuff (usefull while dev stage).
+bool $debug = true|false;
+
+// Sets cURL options.
+array $clientOptions = [
     'redir'          => true, // follow location
     'redirMax'       => 3,    // follow location max
     'timeout'        => 5,    // read timeout
