@@ -3,7 +3,7 @@
     "type": "library",
     "dist": {
         "type": "git",
-        "url": "https://github.com/graphcommons/graphcommons-php"
+        "url": "git@github.com:graphcommons/graphcommons-php.git"
     },
     "homepage": "http://github.com/graphcommons/graphcommons-php",
     "description": "PHP Wrapper for Graph Commons API",
