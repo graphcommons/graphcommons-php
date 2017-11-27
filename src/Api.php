@@ -102,11 +102,11 @@ final class Api
      * Search.
      * @param  string $query
      * @param  array  $uriParams
-     * @return ?array
+     * @return array
      */
-    public function search(string $query, array $uriParams = []): ?array
+    public function search(string $query, array $uriParams = []): array
     {
-        return $this->client->get('/search', ['uriParams' => ['query' => $query] + $uriParams])
+        return (array) $this->client->get('/search', ['uriParams' => ['query' => $query] + $uriParams])
             ->getResponse()->body;
     }
 }
