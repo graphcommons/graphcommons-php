@@ -25,7 +25,9 @@ composer require graphcommons/graphcommons-php
 ```php
 require '<Path to GraphCommons>/src/Autoload.php';
 
-GraphCommons\Autoload::register();
+use GraphCommons\Autoload;
+
+Autoload::register();
 ```
 
 ## Configuration (Client Options)
