@@ -104,3 +104,19 @@ dump $graph->create([
     ]
 ]); // => ?object
 ```
+
+#### Update
+```php
+// PUT /graphs/:id
+dump $graph->update('<id>', [
+    'name'        => 'Test',
+    'description' => 'Test description.',
+    'subtitle'    => 'Test subtitle.',
+]); // => ?object
+```
+
+#### Clear
+```php
+// PUT /graphs/:id/clear
+dump $graph->clear('<id>'); // => ?object
+```
