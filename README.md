@@ -46,23 +46,41 @@ $clientOptions = [
 
 ## Usage
 
+Notice: If any error, all (caller) methods below will throw `GraphCommons\ClientException` due to using `GraphCommons\Client::send()` method that makes call to Graph Commons API. So please, use `try/catch` blocks while making your calls, not regarding this usage examples.
+
+### API Object
+
 ```php
 use GraphCommons\Api;
 
 $api = new Api('<Yor API Key' /*, bool $debug = false, array $clientOptions = [] */);
 ```
 
-##### API Status
+##### Status
 
 ```php
 // GET /status
 dump $api->status() // => ?object
 ```
 
-##### API Search
+##### Search
 
 ```php
 // GET /search
 dump $api->search('Trump' /*, array $uriParams = [] */) // => ?array
 ```
 
+### Graph Object
+
+```php
+use GraphCommons\Thing\Graph;
+
+$graph = new Graph($api);
+```
+
+##### Status
+
+```php
+// GET /status
+dump $api->status() // => bool
+```
