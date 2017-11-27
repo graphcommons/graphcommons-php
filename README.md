@@ -56,7 +56,7 @@ use GraphCommons\Api;
 $api = new Api('<Yor API Key' /*, bool $debug = false, array $clientOptions = [] */);
 ```
 
-##### Status
+#### Status
 
 ```php
 // GET /status
