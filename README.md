@@ -153,12 +153,6 @@ dump $graph->getEdges('<ID>', array $uriParams); // => ?object
 dump $graph->getPaths('<ID>', array $uriParams); // => ?object
 ```
 
-#### Graph - Get Paths
-```php
-// GET /graphs/:id/paths
-dump $graph->getPaths('<ID>', array $uriParams); // => ?object
-```
-
 #### Graph - Get Collab Filter
 ```php
 // GET /graphs/:id/collab_filter
@@ -175,4 +169,66 @@ dump $api->search('<Search Query>' /*, array $uriParams = [] */); // => array
 ```php
 // DELETE /graphs/:id
 dump $api->delete('<ID>'); // => ?object
+```
+
+### Node Object
+```php
+use GraphCommons\Thing\Node;
+
+$node = new Node($api);
+```
+
+#### Node - Get
+```php
+// GET /nodes/:id
+dump $node->get('<ID>'); // => ?object
+```
+
+#### Node - Search
+```php
+// GET /nodes/search
+dump $node->search('<Search Query>' /*, array $uriParams = [] */); // => array
+```
+
+### Hub Object
+```php
+use GraphCommons\Thing\Hub;
+
+$hub = new Hub($api);
+```
+
+#### Hub - Get
+```php
+// GET /hubs/:id
+dump $hub->get('<ID>'); // => ?object
+```
+
+#### Hub - Get Types
+```php
+// GET /hubs/:id/types
+dump $hub->getTypes('<ID>'); // => ?object
+```
+
+#### Hub - Get Paths
+```php
+// GET /hubs/:id/paths
+dump $hub->getPaths('<ID>', array $uriParams); // => ?object
+```
+
+#### Hub - Get Collab Filter
+```php
+// GET /hubs/:id/collab_filter
+dump $hub->getCollabFilter('<ID>', array $uriParams); // => ?object
+```
+
+#### Hub - Search Graphs
+```php
+// GET /graphs/search (alias, with Hub ID)
+dump $hub->searchGraphs('<ID>', '<Search Query>' /*, array $uriParams = [] */); // => array
+```
+
+#### Hub - Search Nodes
+```php
+// GET /nodes/search (alias, with Hub ID)
+dump $hub->searchNodes('<ID>', '<Search Query>' /*, array $uriParams = [] */); // => array
 ```
