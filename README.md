@@ -53,7 +53,7 @@ Notice: If any error, all (caller) methods below will throw `GraphCommons\Client
 ```php
 use GraphCommons\Api;
 
-$api = new Api('<Yor API Key' /*, bool $debug = false, array $clientOptions = [] */);
+$api = new Api('<Yor API Key>' /*, bool $debug = false, array $clientOptions = [] */);
 ```
 
 #### Status
@@ -67,7 +67,7 @@ dump $api->status(); // => ?object
 
 ```php
 // GET /search
-dump $api->search('Trump' /*, array $uriParams = [] */); // => ?array
+dump $api->search('Search Query' /*, array $uriParams = [] */); // => ?array
 ```
 
 ### Graph Object
