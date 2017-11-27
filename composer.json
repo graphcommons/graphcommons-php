@@ -1,0 +1,15 @@
+{
+    "name": "graphcommons/graphcommons",
+    "type": "library",
+    "homepage": "http://github.com/graphcommons/graphcommons-php",
+    "description": "PHP Wrapper for Graph Commons API",
+    "keywords": ["graph commons", "graphcommons", "rest", "php"],
+    "license": "The MIT License (MIT)",
+    "authors": [
+        {"name": "Kerem Güneş", "email": "k-gun@mail.com"}
+    ],
+    "require": {
+        "php": ">=7.1",
+        "ext-curl" : "*"
+    }
+}
