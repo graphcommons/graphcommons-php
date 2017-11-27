@@ -4,7 +4,7 @@ See more about [here](//graphcommons.com/about).
 
 ## Before Beginning
 
-- Set your autoloader properly or use [composer](//getcomposer.org).
+- Set autoloader properly or use [Composer](//getcomposer.org).
 - Use PHP >= 7.1 (see for others [PHP < 7.1](//github.com/graphcommons/graphcommons-php7-archive), [PHP < 7.0](//github.com/graphcommons/graphcommons-php-archive)).
 - Run each call in `try/catch` blocks.
 - On README, `dump` means `var_dump`.
@@ -13,6 +13,15 @@ Notice: See Graph Commons's official documents [here](//graphcommons.github.io/a
 
 ## Installation
 
+```php
+// manual
+require '<Path to GraphCommons>/src/Autoload.php';
+
+use GraphCommons\Autoload;
+
+Autoload::register();
+```
+
 ```bash
 composer require graphcommons/graphcommons-php
 ```
@@ -20,14 +29,6 @@ composer require graphcommons/graphcommons-php
 ```js
 // composer.json
 {"require": {"graphcommons/graphcommons-php": "~2.0"}}
-```
-
-```php
-require '<Path to GraphCommons>/src/Autoload.php';
-
-use GraphCommons\Autoload;
-
-Autoload::register();
 ```
 
 ## Configuration (Client Options)
