@@ -5,7 +5,7 @@ See more about [here](//graphcommons.com/about).
 ## Before Beginning
 
 - Set autoloader properly or use [Composer](//getcomposer.org).
-- Use PHP >= 7.1 (see for others [PHP < 7.1](//github.com/graphcommons/graphcommons-php7-archive), [PHP < 7.0](//github.com/graphcommons/graphcommons-php-archive)).
+- Use PHP >= 7.1 (or see others [PHP < 7.1](//github.com/graphcommons/graphcommons-php7-archive), [PHP < 7.0](//github.com/graphcommons/graphcommons-php-archive)).
 - Run each call in `try/catch` blocks.
 - On README, `dump` means `var_dump`.
 
