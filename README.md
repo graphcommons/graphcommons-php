@@ -36,10 +36,10 @@ composer require graphcommons/graphcommons
 Configuration is optional but you can provide all these;
 
 ```php
-// Dumps all Request and Response stuff (usefull while dev stage).
-bool $debug = true|false;
+// Dumps all Request and Response stuff (usefull while dev stage). (@default)
+bool $debug = false;
 
-// Sets cURL options.
+// Sets cURL options. (@default)
 array $clientOptions = [
     'redir'          => true, // follow location
     'redirMax'       => 3,    // follow location max
