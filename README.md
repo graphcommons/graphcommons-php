@@ -41,7 +41,7 @@ $clientOptions = [
     'redirMax' => 3,       // follow location max
     'timeout' => 5,        // read timeout
     'timeoutConnect' => 3, // connect timeout
-]
+];
 ```
 
 ## Usage
@@ -60,14 +60,14 @@ $api = new Api('<Yor API Key' /*, bool $debug = false, array $clientOptions = []
 
 ```php
 // GET /status
-dump $api->status() // => ?object
+dump $api->status(); // => ?object
 ```
 
 #### Search
 
 ```php
 // GET /search
-dump $api->search('Trump' /*, array $uriParams = [] */) // => ?array
+dump $api->search('Trump' /*, array $uriParams = [] */); // => ?array
 ```
 
 ### Graph Object
@@ -82,5 +82,5 @@ $graph = new Graph($api);
 
 ```php
 // GET /status
-dump $graph->status() // => bool
+dump $graph->status(); // => bool
 ```
