@@ -63,7 +63,7 @@ $api = new Api('<Yor API Key' /*, bool $debug = false, array $clientOptions = []
 dump $api->status() // => ?object
 ```
 
-##### Search
+#### Search
 
 ```php
 // GET /search
@@ -78,9 +78,9 @@ use GraphCommons\Thing\Graph;
 $graph = new Graph($api);
 ```
 
-##### Status
+#### Status
 
 ```php
 // GET /status
-dump $api->status() // => bool
+dump $graph->status() // => bool
 ```
