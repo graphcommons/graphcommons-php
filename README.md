@@ -52,7 +52,7 @@ Notice: If any error, all (caller) methods below will throw `GraphCommons\Client
 ```php
 use GraphCommons\Api;
 
-$api = new Api('<Yor API Key>' /*, bool $debug = false, array $clientOptions = [] */);
+$api = new Api('<Yor API Key>' ?bool $debug = false, ?array $clientOptions = []);
 ```
 
 #### API - Status
@@ -64,7 +64,7 @@ dump $api->status(); // => ?object
 #### API - Search
 ```php
 // GET /search
-dump $api->search('<Search Query>' /*, array $uriParams = [] */); // => array
+dump $api->search('<Search Query>' ?array $uriParams = []); // => array
 ```
 
 ### Graph Object
@@ -162,7 +162,7 @@ dump $graph->getCollabFilter('<ID>', array $uriParams); // => ?object
 #### Graph - Search
 ```php
 // GET /graphs/search
-dump $api->search('<Search Query>' /*, array $uriParams = [] */); // => array
+dump $api->search('<Search Query>' ?array $uriParams = []); // => array
 ```
 
 #### Graph - Delete
@@ -187,7 +187,7 @@ dump $node->get('<ID>'); // => ?object
 #### Node - Search
 ```php
 // GET /nodes/search
-dump $node->search('<Search Query>' /*, array $uriParams = [] */); // => array
+dump $node->search('<Search Query>' ?array $uriParams = []); // => array
 ```
 
 ### Hub Object
@@ -224,11 +224,11 @@ dump $hub->getCollabFilter('<ID>', array $uriParams); // => ?object
 #### Hub - Search Graphs
 ```php
 // GET /graphs/search (alias, with Hub ID)
-dump $hub->searchGraphs('<ID>', '<Search Query>' /*, array $uriParams = [] */); // => array
+dump $hub->searchGraphs('<ID>', '<Search Query>' ?array $uriParams = []); // => array
 ```
 
 #### Hub - Search Nodes
 ```php
 // GET /nodes/search (alias, with Hub ID)
-dump $hub->searchNodes('<ID>', '<Search Query>' /*, array $uriParams = [] */); // => array
+dump $hub->searchNodes('<ID>', '<Search Query>' ?array $uriParams = []); // => array
 ```
