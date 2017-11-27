@@ -37,10 +37,10 @@ Configuration is actually cURL options and optional but you can provide all thes
 
 ```php
 $clientOptions = [
-    'redir' => true,       // follow location
-    'redirMax' => 3,       // follow location max
-    'timeout' => 5,        // read timeout
-    'timeoutConnect' => 3, // connect timeout
+    'redir'          => true, // follow location
+    'redirMax'       => 3,    // follow location max
+    'timeout'        => 5,    // read timeout
+    'timeoutConnect' => 3,    // connect timeout
 ];
 ```
 
