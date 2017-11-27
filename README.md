@@ -56,13 +56,13 @@ $api = new Api('<Yor API Key' /*, bool $debug = false, array $clientOptions = []
 
 ```php
 // GET /status
-dump $api->status() #=> ?object
+dump $api->status() // => ?object
 ```
 
 ##### API Search
 
 ```php
 // GET /search
-dump $api->search('Trump' /*, array $uriParams = [] */) #=> ?array
+dump $api->search('Trump' /*, array $uriParams = [] */) // => ?array
 ```
 
