@@ -41,6 +41,7 @@ final class Hub extends Thing
      * Get.
      * @param  string $id
      * @return ?object
+     * @throws GraphCommons\ClientException
      */
     public function get(string $id): ?object
     {
@@ -52,6 +53,7 @@ final class Hub extends Thing
      * Get types.
      * @param  string $id
      * @return ?object
+     * @throws GraphCommons\ClientException
      */
     public function getTypes(string $id): ?object
     {
@@ -64,6 +66,7 @@ final class Hub extends Thing
      * @param  string $id
      * @param  array  $uriParams
      * @return ?object
+     * @throws GraphCommons\ClientException
      */
     public function getPaths(string $id, array $uriParams): ?object
     {
@@ -76,6 +79,7 @@ final class Hub extends Thing
      * @param  string $id
      * @param  array  $uriParams
      * @return ?object
+     * @throws GraphCommons\ClientException
      */
     public function getCollabFilter(string $id, array $uriParams): ?object
     {
@@ -89,6 +93,7 @@ final class Hub extends Thing
      * @param  string $query
      * @param  array  $uriParams
      * @return array
+     * @throws GraphCommons\ClientException
      */
     public function searchGraphs(string $id, string $query, array $uriParams = []): array
     {
@@ -101,6 +106,7 @@ final class Hub extends Thing
      * @param  string $query
      * @param  array  $uriParams
      * @return array
+     * @throws GraphCommons\ClientException
      */
     public function searchNodes(string $id, string $query, array $uriParams = []): array
     {

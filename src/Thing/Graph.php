@@ -64,6 +64,7 @@ final class Graph extends Thing
      * Check.
      * @param  string $id
      * @return bool
+     * @throws GraphCommons\ClientException
      */
     public function check(string $id): bool
     {
@@ -75,6 +76,7 @@ final class Graph extends Thing
      * Get.
      * @param  string $id
      * @return ?object
+     * @throws GraphCommons\ClientException
      */
     public function get(string $id): ?object
     {
@@ -86,6 +88,7 @@ final class Graph extends Thing
      * Create.
      * @param  array $body
      * @return ?object
+     * @throws GraphCommons\ClientException
      */
     public function create(array $body): ?object
     {
@@ -98,6 +101,7 @@ final class Graph extends Thing
      * @param  string $id
      * @param  array  $graph
      * @return ?object
+     * @throws GraphCommons\ClientException
      */
     public function update(string $id, array $graph): ?object
     {
@@ -109,6 +113,7 @@ final class Graph extends Thing
      * Clear.
      * @param  string $id
      * @return ?object
+     * @throws GraphCommons\ClientException
      */
     public function clear(string $id): ?object
     {
@@ -121,6 +126,7 @@ final class Graph extends Thing
      * @param  string $id
      * @param  array  $signals
      * @return ?object
+     * @throws GraphCommons\ClientException
      */
     public function createSignal(string $id, array $signals): ?object
     {
@@ -132,6 +138,7 @@ final class Graph extends Thing
      * Get types.
      * @param  string $id
      * @return ?object
+     * @throws GraphCommons\ClientException
      */
     public function getTypes(string $id): ?object
     {
@@ -144,6 +151,7 @@ final class Graph extends Thing
      * @param  string $id
      * @param  array  $uriParams
      * @return ?object
+     * @throws GraphCommons\ClientException
      */
     public function getEdges(string $id, array $uriParams): ?object
     {
@@ -156,6 +164,7 @@ final class Graph extends Thing
      * @param  string $id
      * @param  array  $uriParams
      * @return ?object
+     * @throws GraphCommons\ClientException
      */
     public function getPaths(string $id, array $uriParams): ?object
     {
@@ -168,6 +177,7 @@ final class Graph extends Thing
      * @param  string $id
      * @param  array  $uriParams
      * @return ?object
+     * @throws GraphCommons\ClientException
      */
     public function getCollabFilter(string $id, array $uriParams): ?object
     {
@@ -180,6 +190,7 @@ final class Graph extends Thing
      * @param  string $query
      * @param  array  $uriParams
      * @return array
+     * @throws GraphCommons\ClientException
      */
     public function search(string $query, array $uriParams = []): array
     {
@@ -192,6 +203,7 @@ final class Graph extends Thing
      * @param  string $id
      * @note   API side does not return body yet (reported).
      * @return ?object
+     * @throws GraphCommons\ClientException
      */
     public function delete(string $id): ?object
     {

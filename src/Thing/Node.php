@@ -41,6 +41,7 @@ final class Node extends Thing
      * Get.
      * @param  string $id
      * @return ?object
+     * @throws GraphCommons\ClientException
      */
     public function get(string $id): ?object
     {
@@ -52,7 +53,8 @@ final class Node extends Thing
      * Search.
      * @param  string $query
      * @param  array  $uriParams
-     * @return ?object
+     * @return array
+     * @throws GraphCommons\ClientException
      */
     public function search(string $query, array $uriParams = []): array
     {
