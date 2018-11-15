@@ -228,11 +228,11 @@ dump $hub->getCollabFilter('<ID>', array $uriParams); // => ?object
 #### Hub - Search Graphs
 ```php
 // GET /graphs/search (alias, with Hub ID)
-dump $hub->searchGraphs('<ID>', '<Search Query>' ?array $uriParams = []); // => array
+dump $hub->searchGraphs('<ID>', '<Search Query>', ?array $uriParams = []); // => array
 ```
 
 #### Hub - Search Nodes
 ```php
 // GET /nodes/search (alias, with Hub ID)
-dump $hub->searchNodes('<ID>', '<Search Query>' ?array $uriParams = []); // => array
+dump $hub->searchNodes('<ID>', '<Search Query>', ?array $uriParams = []); // => array
 ```
