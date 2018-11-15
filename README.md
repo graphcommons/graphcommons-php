@@ -5,7 +5,7 @@ See more about [here](//graphcommons.com/about).
 ## Before Beginning
 
 - Set autoloader properly or use [Composer](//getcomposer.org).
-- Use PHP >= 7.1 (or see others [PHP < 7.1](//github.com/graphcommons/graphcommons-php7-archive), [PHP < 7.0](//github.com/graphcommons/graphcommons-php-archive)).
+- Use PHP >= 7.2 (or see others [PHP < 7.2](//github.com/graphcommons/graphcommons-php/releases/tag/2.0.0), [PHP < 7.1](//github.com/graphcommons/graphcommons-php7-archive), [PHP < 7.0](//github.com/graphcommons/graphcommons-php-archive)).
 - Run each call in `try/catch` blocks.
 - On README, `dump` means `var_dump()`, besides `?` means optional for function arguments and nullable for function returns.
 
@@ -28,7 +28,7 @@ composer require graphcommons/graphcommons
 
 ```js
 // composer.json
-{"require": {"graphcommons/graphcommons": "~2.0"}}
+{"require": {"graphcommons/graphcommons": "~3.0"}}
 ```
 
 ## Configuration
