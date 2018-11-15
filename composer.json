@@ -4,7 +4,7 @@
     "homepage": "http://github.com/graphcommons/graphcommons-php",
     "description": "PHP Wrapper for Graph Commons API",
     "keywords": ["graph commons", "graphcommons", "rest", "php"],
-    "license": "The MIT License (MIT)",
+    "license": "MIT",
     "authors": [
         {"name": "Kerem Güneş", "email": "k-gun@mail.com"}
     ],
