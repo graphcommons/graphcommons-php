@@ -201,7 +201,6 @@ final class Graph extends Thing
     /**
      * Delete.
      * @param  string $id
-     * @note   API side does not return body yet (reported).
      * @return ?object
      * @throws GraphCommons\ClientException
      */
