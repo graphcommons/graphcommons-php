@@ -28,7 +28,6 @@ declare (strict_types=1);
 namespace GraphCommons\Thing;
 
 use GraphCommons\Api;
-use \stdClass as object; // @note This will be forbidden with PHP/7.2.
 
 /**
  * @package GraphCommons

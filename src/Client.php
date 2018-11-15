@@ -27,8 +27,6 @@ declare (strict_types=1);
 
 namespace GraphCommons;
 
-use \stdClass as object; // @note This will be forbidden with PHP/7.2.
-
 /**
  * @package GraphCommons
  * @object  GraphCommons\Client
@@ -72,9 +70,11 @@ final class Client
      */
     public function __call(string $method, array $arguments = []): self
     {
+        // add shortcut methods
         $methods = ['head', 'get', 'post', 'put', 'delete'];
         if (in_array($method, $methods)) {
             array_unshift($arguments, strtoupper($method));
+            // proxify all methods to send()
             return call_user_func_array([$this, 'send'], $arguments);
         }
 
