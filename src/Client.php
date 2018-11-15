@@ -125,11 +125,11 @@ final class Client
      * Send.
      * @param  string $method
      * @param  string $uri
-     * @param  array  $args
+     * @param  array  $arguments
      * @return self
      * @throws GraphCommons\ClientException
      */
-    private function send(string $method, string $uri, array $args = []): self
+    private function send(string $method, string $uri, array $arguments = []): self
     {
         $apiConfig = $this->api->getConfig();
         if (empty($apiConfig['url'])) {
@@ -143,12 +143,12 @@ final class Client
         $this->response = $this->createMessageObject();
 
         $url = sprintf('%s/%s', $apiConfig['url'], trim($uri, '/ '));
-        if (!empty($args['uriParams'])) {
-            $url .= '?'. http_build_query($args['uriParams']);
+        if (!empty($arguments['uriParams'])) {
+            $url .= '?'. http_build_query($arguments['uriParams']);
         }
 
-        $headers = $args['headers'] ?? [];
-        $body    = $args['body'] ?? null;
+        $headers = $arguments['headers'] ?? [];
+        $body    = $arguments['body'] ?? null;
 
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
